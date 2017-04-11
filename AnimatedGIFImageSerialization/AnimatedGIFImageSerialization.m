@@ -61,7 +61,7 @@ __attribute__((overloadable)) UIImage * UIImageWithAnimatedGIFData(NSData *data,
 
         CFRelease(imageSource);
 
-        if (numberOfFrames == 1) {
+        if (numberOfFrames == 1 || [[NSUserDefaults standardUserDefaults] boolForKey:@"DW_SETTING_GIF_AUTOPLAY_KEY"]) {
             return [mutableImages firstObject];
         } else {
             return [UIImage animatedImageWithImages:mutableImages duration:(duration <= 0.0f ? calculatedDuration : duration)];
